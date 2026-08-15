@@ -163,9 +163,10 @@ public protocol ClientOutboundInterceptor: Sendable {
 
     /// Intercepts paginated workflow list operations.
     ///
-    /// This method is called for each page fetch, both when using
-    /// ``TemporalClient/listWorkflowsPage(query:pageSize:nextPageToken:callOptions:)`` directly
-    /// and internally when iterating the sequence returned by ``TemporalClient/listWorkflows(query:limit:callOptions:)``.
+    /// This method is called for each page fetch performed through
+    /// ``TemporalClient/listWorkflowsPage(query:pageSize:nextPageToken:callOptions:)``. Iterating
+    /// the sequence returned by ``TemporalClient/listWorkflows(query:limit:callOptions:)`` goes
+    /// through ``listWorkflows(input:next:)`` instead.
     ///
     /// - Parameters:
     ///   - input: The input passed to fetch a single page of workflow executions.
